@@ -152,8 +152,10 @@ a:hover {
 .main-nav {
 	font-size: 0.6em;
 	text-transform: uppercase;
-	letter-spacing: 3px;
-	text-align: center
+	letter-spacing: 1px;
+	text-align: center;
+	font-family: 'brandon_grotesquebold';
+
 }
 .main-nav.fixed {
 	position: fixed;
@@ -173,7 +175,6 @@ a:hover {
 }
 .main-nav ul {
 	display: inline;
-	/* border: 1px solid #333; */
 }
 .main-nav ul li {
 	display: inline;
@@ -216,7 +217,7 @@ a:hover {
 
 #galleria-single-wrap {
 	position: relative;
-	margin: 0px auto 20px auto;
+	margin: 0 auto;
 }
 
 #galleria-single {
@@ -231,15 +232,15 @@ a:hover {
 	display:  block !important;
 	opacity: 1 !important;
 	height: 40px;
-	position: fixed;
-	left: 50%;
-	bottom: 0;
-	margin-left: -50px;
-	width: 100px;
+	position: relative;
 	line-height : 40px;
-	font-family: 'brandon_grotesquemedium';
 	font-size: 0.7em;
-	letter-spacing: 1px
+	letter-spacing: 1px;
+	margin: 0 auto;
+	
+}
+#counter-wrapper * {
+	font-family: 'brandon_grotesquebold' !important;
 }
 #toggle-nav {
 	height: 40px;
@@ -305,10 +306,10 @@ font-family: 'brandon_grotesquemedium';
 }
 #grid {
 	z-index: 200;
-	position: absolute;
+	position: relative;
 	margin: 0 30px;
 	height: 100%;
-background-color: #f5f5f5;
+	background-color: #f5f5f5;
 }
 #grid.shown {
 background-color: #f5f5f5;
@@ -321,7 +322,7 @@ display: block;
 #grid a {
 	display: block;
 	float: left;
-	width: 12%;
+	width: 12.2%;
 	height: auto;
 	margin: 0 1% 2% 1% ;
 }
@@ -341,7 +342,15 @@ display: block;
 
 
 /* Media queries */
-@media only screen and (max-width:1024px) {}
+@media only screen and (max-width:1024px) {
+	#grid a {
+		display: block;
+		float: left;
+		width: 18%;
+		height: auto;
+		margin: 0 1% 2% 1% ;
+	}
+}
 @media only screen and (max-width:800px) {}
 @media only screen and (max-width:600px) {
 	#logo {
@@ -382,7 +391,7 @@ display: block;
 		display: block;
 	}
 	.main-nav {
-		display: none;
+		
 	}
 	.main-nav ul, 
 	.main-nav ul li,
@@ -395,7 +404,8 @@ display: block;
 	#grid {
 		left: 0;
 		right:0;
-		padding: 0 10px
+		padding: 0 10px;
+		margin: 0;
 	}
 	#grid a {
 	display: block;
@@ -403,12 +413,12 @@ display: block;
 	width: 31%;
 	height: auto;
 	margin: 0 1% 2% 1% ;
-}
-.general {
-width: auto;
-left: 20px;
-right: 20px;
-}
+	}
+	.general {
+	width: auto;
+	left: 20px;
+	right: 20px;
+	}
 }
 
 @media only screen and (device-height:480px) {

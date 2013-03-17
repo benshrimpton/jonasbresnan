@@ -30,22 +30,16 @@ include_once 'includes.php';
 <meta property="og:type" content="website">
 <meta property="og:image" content="<!-- path to image -->">
 <meta property="og:url" content="<?php bloginfo( 'template_url' ); ?>">
+<meta name="robots" content="noindex, nofollow">
 
-<!-- jQuery scripts 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<!-- jQuery scripts -->
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
+<script src="<?php bloginfo( 'template_url' ); ?>/js/jquery.js"></script>
 <script>window.jQuery || document.write('<script src="<?php bloginfo( 'template_url' ); ?>/js/jquery.js"><\/script>')</script>
--->
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
+
 
 <!-- plugin files for dev - put into one file fro production -->
-<script src="<?php bloginfo( 'template_url' ); ?>/js/vendor/galleria-1.2.9/galleria-1.2.9.min.js"></script>
-
-
-<!--
-<script src="<?php bloginfo( 'template_url' ); ?>/js/vendor/royalslider/jquery.royalslider.min.js"></script>
-<script src="<?php bloginfo( 'template_url' ); ?>/js/vendor/jquery.masonry.min.js"></script>
--->
+<script src="<?php bloginfo( 'template_url' ); ?>/js/vendor/galleria-1.2.7/galleria-1.2.7.min.js"></script>
 
 <!-- main site files for production -->
 <script src="<?php bloginfo( 'template_url' ); ?>/js/plugins.js"></script>
@@ -76,7 +70,7 @@ wp_head();
 <header role="banner" class="main-header">
 
 <!-- <a href="#" id="toggle-nav">&#9776;</a> -->
-<a href="#" id="toggle-grid">&#9776;</a>
+
 
 <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 <?php if(is_front_page() ) : ?>

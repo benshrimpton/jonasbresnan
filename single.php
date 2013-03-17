@@ -5,11 +5,12 @@ include_once 'includes.php';
 get_header();
 ?>
 
-<div id="counter-wrapper"></div>
+<a href="#" id="toggle-grid">Toggle Thumbnails</a>
 
 <div id="galleria-single-wrap">
 	<div id="galleria-single"></div>
 </div>
+<div id="counter-wrapper"><!-- js counter --></div>
 
 
 
@@ -23,13 +24,14 @@ get_header();
 			<?php foreach( $images as $image ): ?>
 					<a href="<?php echo $image['sizes']['large']; ?>">
 					<img
-					src="<?php echo $image['sizes']['thumbnail']; ?>"
+					src="<?php bloginfo( 'template_url' ); ?>/css/img/loader.png"
 			        data-original="<?php echo $image['sizes']['thumbnail']; ?>"
 			        class="lazy"
 			        />
 			        </a>
 			<?php endforeach; ?>
 	<?php endwhile; endif;  ?>
+		<div class="clear"></div>
 </div>
 
 	
@@ -37,24 +39,25 @@ get_header();
 $(document).ready(function() {
 
   
-Galleria.loadTheme('<?php bloginfo( 'template_url' ); ?>/js/vendor/galleria-1.2.9/themes/classic/galleria.classic.min.js');
+Galleria.loadTheme('<?php bloginfo( 'template_url' ); ?>/js/vendor/galleria-1.2.7/themes/classic/galleria.classic.min.js');
 
 
 
 
 $('.main-header').imagesLoaded(function() {
+
 		//set height vars
-		var winheight = $(window).innerHeight();
+		var winheight = $(window).height();
 		var headheight = $('.main-header').outerHeight() + 60;
 		var galHeight = winheight - headheight ;
 		var gridTop = winheight + 20;
 		
-		console.log(winheight, headheight, galHeight)
+		//console.log(winheight, headheight, galHeight)
 		
-		$('#grid').css({'top': gridTop+'px'});
+		//$('#grid').css({'top': gridTop+'px'});
 		
 		//animate galleria wrapper then init the galleria
-		$('#galleria-single').animate({'height': galHeight+'px'}, 100, function() {
+		$('#galleria-single-wrap').animate({'height': galHeight+'px'}, 0, function() {
 		
 			Galleria.run('#galleria-single', {
 				autoPlay: 3000,
@@ -63,6 +66,7 @@ $('.main-header').imagesLoaded(function() {
 				keepSource: true,
 				thumbnails: false,
 				transition: 'flash',
+				responsive: true,
 				extend: function() {
 					var gallery = this; // "this" is the gallery instance
 					//$("a#galleria-next").click(function() {gallery.next();});
@@ -87,12 +91,13 @@ $('#grid').on('click', 'a', function(e) {
 	var winheight = $(window).height();
 	var gridTop = $('.main-header').outerHeight() + 20;
 	var gridBottom = $(window).height() + 20;
+	var gridIsShown = $('#grid').hasClass('shown');
 	
-	if( $('#grid').hasClass('shown') ){
-		$('#grid').animate({'top':gridBottom+'px'}).removeClass('shown');
+	if( gridIsShown ){
+		$('#grid').css({'position':'relative', 'top':'auto'}).animate({}).removeClass('shown');
 	}
-	else{
-			$('#grid').animate({'top':gridBottom+'px'}, 600).addClass('shown');
+	else {
+		$('#grid').css({'top':'auto'});
 	}
 		
 });
@@ -102,16 +107,18 @@ $('#grid').on('click', 'a', function(e) {
 $('#toggle-grid').on('click', function(e) { 
 
 	e.preventDefault();
+	
 	var gridTop = $('.main-header').outerHeight() + 20;
 	var gridBottom = $(window).height() + 20;
+	var gridIsShown = $('#grid').hasClass('shown');
 	
-	$('body, html').animate({scrollTop: 0}, 50);
+	$('body, html').animate({scrollTop: 0}, 50, 'jswing');
 	
-	if( $('#grid').hasClass('shown') ){
-		$('#grid').animate({'top':gridBottom+'px'}, 300, 'jswing').removeClass('shown');
+	if( gridIsShown ){
+		$('#grid').css({'position':'relative', 'top':'auto'}, 300, 'jswing').removeClass('shown');
 	}
-	else{
-			$('#grid').animate({'top':gridTop+'px'}, 300, 'jswing').addClass('shown');
+	if( !gridIsShown ){
+		$('#grid').css({'position':'absolute', 'top':gridTop+'px'}, 300, 'jswing').addClass('shown');
 	}
 });
 
@@ -130,12 +137,14 @@ $(window).on('scroll', function() {
 
 	
 $(window).on('resize', function() {
-		var winheight = $(window).innerHeight();
+
+		//set height vars
+		var winheight = $(window).height();
 		var headheight = $('.main-header').outerHeight() + 60;
 		var galHeight = winheight - headheight ;
 		var gridTop = winheight + 20;
 	
-		$('#galleria-single').animate({'height':galHeight+'px'});
+		$('#galleria-single-wrap').css({'height':galHeight+'px'});
 });	
 
 

@@ -17,11 +17,7 @@ include_once 'includes.php';
 get_header(); ?>
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class('general'); ?>>
-		
-					<h2><?php the_title(); ?></h2>
-						
-					
-					
+							
 						<?php the_content(); ?>
 						
 						<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'boilerplate' ), 'after' => '' ) ); ?>
