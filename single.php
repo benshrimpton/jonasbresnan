@@ -5,9 +5,9 @@ include_once 'includes.php';
 get_header();
 ?>
 
-<a href="#" id="toggle-grid">Toggle Thumbnails</a>
 
 <div id="galleria-single-wrap">
+<a href="#" id="toggle-grid">Toggle Thumbnails</a>
 	<div id="galleria-single"></div>
 </div>
 <div id="counter-wrapper"><!-- js counter --></div>
@@ -48,7 +48,7 @@ $('.main-header').imagesLoaded(function() {
 
 		//set height vars
 		var winheight = $(window).height();
-		var headheight = $('.main-header').outerHeight() + 60;
+		var headheight = $('.main-header').outerHeight() + 58;
 		var galHeight = winheight - headheight ;
 		var gridTop = winheight + 20;
 		
@@ -58,7 +58,7 @@ $('.main-header').imagesLoaded(function() {
 		
 		//animate galleria wrapper then init the galleria
 		$('#galleria-single-wrap').animate({'height': galHeight+'px'}, 0, function() {
-		
+			$('.main-footer').show();
 			Galleria.run('#galleria-single', {
 				autoPlay: 3000,
 				transitionSpeed: 600,
@@ -123,16 +123,7 @@ $('#toggle-grid').on('click', function(e) {
 });
 
 
-$(window).on('scroll', function() { 
-	var scrollDistance  = $(this).scrollTop();
-	console.log(scrollDistance);
-	if (scrollDistance > 100) {
- 	$('.main-nav').addClass('fixed');
-	}
-	else {
- 	$('.main-nav').removeClass('fixed');
-	}
-});
+
 
 
 	
@@ -140,7 +131,7 @@ $(window).on('resize', function() {
 
 		//set height vars
 		var winheight = $(window).height();
-		var headheight = $('.main-header').outerHeight() + 60;
+		var headheight = $('.main-header').outerHeight() + 58;
 		var galHeight = winheight - headheight ;
 		var gridTop = winheight + 20;
 	

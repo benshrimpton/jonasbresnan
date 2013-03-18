@@ -13,7 +13,7 @@
 </section><!-- .content -->
 <footer role="contentinfo" class="main-footer clear">
 
-&copy; <?php the_time('Y'); ?> | <?php bloginfo( 'title' ); ?> | website by <a href="http://blackandblackcreative.com" target="_blank" title="Website by Black &amp; Black Creative">Black &amp; Black Creative</a>
+&copy; Copyright <?php the_time('Y'); ?> :: <?php bloginfo( 'title' ); ?> :: website by <a href="http://blackandblackcreative.com" target="_blank" title="Website by Black &amp; Black Creative">Black &amp; Black Creative</a>
 
 </footer><!-- footer -->
 <?php

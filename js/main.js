@@ -46,7 +46,23 @@ $('.main-nav a').on('click', function(e) {
 
   
 				
+$('.video, .video iframe').on('click', function(){
+	var $this = $(this);
+	$this.toggleClass('fixed');
+});
 
+
+
+$(window).on('scroll', function() { 
+	var scrollDistance  = $(this).scrollTop();
+	console.log(scrollDistance);
+	if (scrollDistance > 100) {
+ 	$('.main-nav').addClass('fixed');
+	}
+	else {
+ 	$('.main-nav').removeClass('fixed');
+	}
+});
 
 
 

@@ -129,6 +129,7 @@
     width: 100%;
     height: 100%;
     left: 0;
+    
 }
 .galleria-image-nav-left,
 .galleria-image-nav-right {
@@ -145,6 +146,7 @@
 	-o-transition: all ease 0.3s;
 	-ms-transition: all ease 0.3s;
 	transition: all ease 0.3s;
+	
 }
 .galleria-image-nav-right {
     left: auto;
